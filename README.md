@@ -15,4 +15,4 @@ ProStages est un projet porté durant les tp du module dédié à Symfony du DUT
 ProStages is a web application showcasing **internship offers** meant for *students*.
 Offered by *companies*, the offers are meant for specific **courses** from the IUT.
 
-ProStages is a project created during the practical classes of the Symfony course of the Computer Science HND of the IUT de Bayonne.
+ProStages is a project created during the practical classes of the Symfony course of the Computer Science HND of Bayonne's IUT.
