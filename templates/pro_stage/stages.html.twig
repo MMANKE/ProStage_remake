@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <h1> Cette page affichera la liste des stages</h1>
+    {% for stage in stages %}
+    <div class="card">
+      <div class="card-header">
+        {{stage.entreprise.nom}}
+      </div>
+        <div class="card-body">
+          <h5 class="card-title">{{stage.titre}}</h5>
+          <p class="card-text">{{stage.domaine}}</p>
+          <a href="{{path("pro_stage_details_stage", {'id' : stage.id})}}" class="btn btn-primary">Voirs détails</a>
+      </div>
+    </div>
+    {% endfor %}
+{% endblock %}

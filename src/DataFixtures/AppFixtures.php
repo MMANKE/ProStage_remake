@@ -69,14 +69,13 @@ class AppFixtures extends Fixture
                     break;
                   case 1:
                     $temp->addFormation($LP);
-                      break;
+                    break;
                   case 2:
                     $temp->addFormation($DUT);
-                        break;
+                    break;
                 }
                 $manager->persist($temp);
               }
-
        // Envoyer en BD tous les objets persistés
        $manager->flush();
     }

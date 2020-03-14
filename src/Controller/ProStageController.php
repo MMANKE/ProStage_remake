@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\StageRepository;
 
 class ProStageController extends AbstractController
 {
@@ -29,6 +30,14 @@ class ProStageController extends AbstractController
     public function showFormations()
     {
         return $this->render('pro_stage/formations.html.twig');
+    }
+
+    /**
+     * @Route("/stages", name="pro_stage_stages")
+     */
+    public function showAllStages(StageRepository $stageRepository)
+    {
+        return $this->render('pro_stage/stages.html.twig', ['stages' => $stageRepository->findAll()]);
     }
 
     /**
