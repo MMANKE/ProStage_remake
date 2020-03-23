@@ -18,7 +18,7 @@ class ProStageController extends AbstractController
      */
     public function index()
     {
-        return $this->render('pro_stage/index.html.twig');
+        return $this->redirectToRoute('pro_stage_stages');
     }
 
     /**
