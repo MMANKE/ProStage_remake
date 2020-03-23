@@ -3,12 +3,15 @@
 {% block body %}
 
   <!-- nom -->
+  <div class="my-3">
   <h1>
     {{entreprise.nom}}
   </h1>
-
+  </div>
+  <div class="card my-3">
+  <div class="card-body">
   <!-- Activité -->
-  <div class="card">
+  <div class="card my-3">
   <div class="card-header">
   Activité :
   </div>
@@ -18,20 +21,22 @@
   </div>
 
   <!-- Adresse -->
-  <div class="card">
+  <div class="card my-3">
   <div class="card-header">
     Informations :
   </div>
   <div class="card-body">
-  <div class="card">
+  <div class="card my-3">
     <div class="card-body">
       Adresse : {{entreprise.adresse}}
     </div>
   </div>
-  <div class="card">
+  <div class="card my-3">
     <div class="card-body">
       Site web : <a href="{{entreprise.siteWeb}}">{{entreprise.siteWeb}}</a>
     </div>
+  </div>
+  </div>
   </div>
   </div>
   </div>

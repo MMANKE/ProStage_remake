@@ -58,18 +58,18 @@ class ProStageController extends AbstractController
     /**
      * @Route("/stages/{id}", name="pro_stage_details_stage")
      */
-    public function showStageDetails($id)
+    public function showStageDetails(StageRepository $stageRepository, $id)
     {
-      $stage = $this->getDoctrine()->getRepository(Stage::class)->find($id);
+      $stage = $stageRepository->find($id);
       return $this->render('pro_stage/stageDetails.html.twig', ['stage' => $stage]);
     }
 
     /**
      * @Route("/entreprise/{id}", name="pro_stage_details_entreprise")
      */
-    public function showEntrepriseDetails($id)
+    public function showEntrepriseDetails(EntrepriseRepository $entrepriseRepo, $id)
     {
-        $entreprise = $this->getDoctrine()->getRepository(Entreprise::class)->find($id);
+        $entreprise = $entrepriseRepo->find($id);
         return $this->render('pro_stage/entreprise.html.twig', ['entreprise' => $entreprise]);
     }
 
