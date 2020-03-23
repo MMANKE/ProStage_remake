@@ -19,22 +19,56 @@ class StageRepository extends ServiceEntityRepository
         parent::__construct($registry, Stage::class);
     }
 
-    // /**
-    //  * @return Stage[] Returns an array of Stage objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
+
+// ------------  TP1 - Requêtes sur mesure ------------------------
+   /**
+    * @return Stage[] Returns an array of Stage objects
+    */
+    public function findStagesByEntrepriseName($name) {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
+            ->join('s.entreprise', 'e')
+            ->andWhere('e.nom = :val')
+            ->setParameter('val', $name)
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+
+    /**
+     * @return Stage[] Returns an array of Stage objects
+     */
+     public function findStagesByFormationName($name) {
+
+          $entityManager = $this->getEntityManager();
+
+          $requete = $entityManager->createQuery(
+                'SELECT s
+                 FROM App\Entity\Stage s
+                 JOIN s.formations f
+                 WHERE f.nom = :nomFormation'
+              )
+              ->setParameter('nomFormation', $name)
+              ->execute();
+              return $requete;
+     }
+
+     /**
+      * @return Stage[] Returns an array of Stage objects
+      */
+
+      public function findAll() {
+
+        $entityManager = $this->getEntityManager();
+
+        $requete = $entityManager->createQuery(
+            'SELECT s, e
+             FROM App\Entity\Stage s
+             JOIN s.entreprise e'
+           )
+           ->execute();
+           return $requete;
+      }
+
 
     /*
     public function findOneBySomeField($value): ?Stage
