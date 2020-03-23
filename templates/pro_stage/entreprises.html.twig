@@ -1,5 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1> Cette page affichera la liste des entreprises proposant un stage</h1>
+<div class="my-3">
+  <h1> Entreprises </h1>
+</div>
+<div class="card my-3">
+  <div class="card-body">
+  {% for entreup in entreprises %}
+  <div class="card my-3">
+    <div class="card-header">
+      {{entreup.nom}}
+    </div>
+      <div class="card-body">
+        <h5 class="card-title">{{entreup.activite}}</h5>
+        <p class="card-text">{{entreup.siteWeb}}</p>
+        <a href="{{path("pro_stage_details_entreprise", {'id' : entreup.id})}}" class="btn btn-primary">Voir en détail</a>
+        <a href="{{path("pro_stage_stages_by_entreprise", {'id' : entreup.id})}}" class="btn btn-primary">Voir les stages proposés</a>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
 {% endblock %}

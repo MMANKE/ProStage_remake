@@ -1,8 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <h1> Cette page affichera le descriptif du stage ayant pour identifiant {{id}}</h1>
 
-  
+  <!-- titre -->
+  <div class="my-3">
+    <h1> {{stage.titre}} </h1>
+  </div>
+  <div class="card my-3">
+  <div class="card-body">
+    <!-- domaine -->
+    <div class="card my-3">
+    <div class="card-header">
+    Domaine :
+    </div>
+    <div class="card-body">
+      {{stage.domaine}}
+    </div>
+    </div>
+
+    <!-- formation -->
+    <div class="card my-3">
+    <div class="card-header">
+    Formations visées :
+    </div>
+    <div class="card-body">
+      {% for formation in stage.formations %}
+        {{formation.nom}}
+      {% endfor %}
+    </div>
+    </div>
+
+    <!-- email -->
+    <div class="card my-3">
+    <div class="card-header">
+    Email de contact :
+    </div>
+    <div class="card-body">
+      {{stage.email}}
+    </div>
+    </div>
+    <div class="my-3">
+      <form action="{{path('pro_stage_details_entreprise', {'id' : stage.entreprise.id })}}">
+          <input class="btn btn-primary" type="submit" value="Voir détails entreprise">
+      </form>
+    </div>
+    </div>
+    </div>
 
 {% endblock %}

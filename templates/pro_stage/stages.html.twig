@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-  <h1> Cette page affichera la liste des stages</h1>
+<div class="my-3">
+  <h1> Stages </h1>
+  </div>
+<div class="card my-3">
+    <div class="card-body">
     {% for stage in stages %}
-    <div class="card">
+    <div class="card my-3">
       <div class="card-header">
         {{stage.entreprise.nom}}
       </div>
@@ -15,4 +18,6 @@
       </div>
     </div>
     {% endfor %}
+    </div>
+  </div>
 {% endblock %}

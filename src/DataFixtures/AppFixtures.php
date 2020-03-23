@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
               $google->setNom("Google");
               $google->setActivite("Dominer le web");
               $google->setAdresse("12 rue Google LA USA");
-              $google->setSiteWeb("https://www.google.fr");
+              $google->setSiteWeb("www.google.fr");
 
               $manager->persist($google);
 
