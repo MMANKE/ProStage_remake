@@ -10,6 +10,8 @@ use App\Repository\FormationRepository;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use App\Form\StageType;
+use App\Form\EntrepriseType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,12 +86,8 @@ class ProStageController extends AbstractController
 
         $entreup = new Entreprise();
 
-        $form = $this->createFormBuilder($entreup)
-                        -> add('nom', TextType::class)
-                        -> add('activite', TextType::class)
-                        -> add('adresse', TextType::class)
-                        -> add('siteWeb', UrlType::class)
-                        -> getForm();
+        $form = $this->createForm(EntrepriseType::class, $entreup);
+
         $form->handleRequest($requetteHttp);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -110,12 +108,8 @@ class ProStageController extends AbstractController
 
         $entreup = $entrepriseRepo->find($id);
 
-        $form = $this->createFormBuilder($entreup)
-                        -> add('nom', TextType::class)
-                        -> add('activite', TextType::class)
-                        -> add('adresse', TextType::class)
-                        -> add('siteWeb', UrlType::class)
-                        -> getForm();
+        $form = $this->createForm(EntrepriseType::class, $entreup);
+
         $form->handleRequest($requetteHttp);
 
         if($form->isSubmitted()) {
@@ -127,4 +121,26 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/formulaires/modifierEntreprise.html.twig',
                             ['form' => $form->createView()]);
     }
+
+    /**
+     * @Route("/ajout-stage", name="pro_stage_ajout_stage")
+     */
+    public function addStage(Request $requetteHttp, ObjectManager $manager) {
+
+        $stage = new Stage();
+
+        $form = $this->createForm(StageType::class, $stage);
+        $form->handleRequest($requetteHttp);
+
+        if($form->isSubmitted() && $form->isValid()) {
+              $manager->persist($stage);
+              $manager->flush();
+              return $this->redirectToRoute('pro_stage_acceuil');
+        }
+
+        return $this->render('pro_stage/formulaires/ajouterStage.html.twig',
+                            ['form' => $form->createView()]
+                          );
+    }
+
 }

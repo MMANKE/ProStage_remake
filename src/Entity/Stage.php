@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StageRepository")
@@ -20,16 +21,19 @@ class Stage
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\Length(max=200)
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=2000)
+     * @Assert\Length(max=2000)
      */
     private $domaine;
 
     /**
      * @ORM\Column(type="string", length=250)
+     * @Assert\Email
      */
     private $email;
 
@@ -39,8 +43,9 @@ class Stage
     private $formations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="entreprise")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="entreprise", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid
      */
     private $entreprise;
 
