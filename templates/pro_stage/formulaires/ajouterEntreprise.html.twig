@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="my-2">
+    <h1> Ajouter une Entreprise </h1>
+  </div>
+  <div class="card my-3">
+    <div class="card-body">
+      {{ form_start(form) }}
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.nom) }} :
+        </div>
+        <div class="card-body">
+          {{ form_errors (form.nom) }}
+          {{ form_widget (form.nom) }}
+        </div>
+      </div>
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.activite) }} :
+        </div>
+        <div class="card-body">
+          {{ form_errors (form.activite) }}
+          {{ form_widget (form.activite) }}
+        </div>
+      </div>
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.adresse) }} :
+        </div>
+        <div class="card-body">
+          {{ form_errors (form.adresse) }}
+          {{ form_widget (form.adresse) }}
+        </div>
+      </div>
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.siteWeb) }} :
+        </div>
+        <div class="card-body">
+          {{ form_errors (form.siteWeb) }}
+          {{ form_widget (form.siteWeb) }}
+        </div>
+      </div>
+      <div class="my-2">
+        <button class="btn btn-primary" type="submit">Ajouter Entreprise</button>
+      </div>
+  {{ form_end(form) }}
+  </div>
+</div>
+{% endblock %}

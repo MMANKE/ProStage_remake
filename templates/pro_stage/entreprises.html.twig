@@ -13,9 +13,10 @@
     </div>
       <div class="card-body">
         <h5 class="card-title">{{entreup.activite}}</h5>
-        <p class="card-text">{{entreup.siteWeb}}</p>
+        <p class="card-text"><a href="{{entreup.siteWeb}}"> {{entreup.siteWeb}} </a></p>
         <a href="{{path("pro_stage_details_entreprise", {'id' : entreup.id})}}" class="btn btn-primary">Voir en détail</a>
         <a href="{{path("pro_stage_stages_by_entreprise", {'id' : entreup.id})}}" class="btn btn-primary">Voir les stages proposés</a>
+        <a href="{{path("pro_stage_modif_entreprise", {'id' : entreup.id })}}" class="btn btn-primary">Modifier</a>
     </div>
   </div>
   {% endfor %}

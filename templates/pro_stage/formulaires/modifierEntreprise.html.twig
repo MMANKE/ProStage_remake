@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="my-3">
+    <h1> Modification d'une Entreprise </h1>
+  </div>
+  <div class="card my-3">
+    <div class="card-body">
+      {{ form_start(form) }}
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.nom) }} :
+        </div>
+        <div class="card-body">
+          {{ form_errors (form.nom) }}
+          {{ form_widget (form.nom) }}
+        </div>
+      </div>
+      <div class="card my-3">
+        <div class="card-body">
+          {{ form_label (form.activite) }} :
+          <br>
+          {{ form_errors (form.activite) }}
+          {{ form_widget (form.activite) }}
+        </div>
+      </div>
+      <div class="card my-3">
+        <div class="card-body">
+          {{ form_label (form.adresse) }} :
+          <br>
+          {{ form_errors (form.adresse) }}
+          {{ form_widget (form.adresse) }}
+        </div>
+      </div>
+      <div class="card my-3">
+        <div class="card-body">
+          {{ form_label (form.siteWeb) }} :
+          <br>
+          {{ form_errors (form.siteWeb) }}
+          {{ form_widget (form.siteWeb) }}
+        </div>
+      </div>
+      <div class="my-3">
+        <button class="btn btn-primary" type="submit">Modifier l'Entreprise</button>
+      </div>
+  {{ form_end(form) }}
+  </div>
+</div>
+{% endblock %}

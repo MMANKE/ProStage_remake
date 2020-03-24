@@ -10,6 +10,10 @@ use App\Repository\FormationRepository;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ProStageController extends AbstractController
 {
@@ -73,4 +77,54 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/entreprise.html.twig', ['entreprise' => $entreprise]);
     }
 
+    /**
+     * @Route("/ajout-entreprise", name="pro_stage_ajout_entreprise")
+     */
+    public function addEntreprise(Request $requetteHttp, ObjectManager $manager) {
+
+        $entreup = new Entreprise();
+
+        $form = $this->createFormBuilder($entreup)
+                        -> add('nom', TextType::class)
+                        -> add('activite', TextType::class)
+                        -> add('adresse', TextType::class)
+                        -> add('siteWeb', UrlType::class)
+                        -> getForm();
+        $form->handleRequest($requetteHttp);
+
+        if($form->isSubmitted() && $form->isValid()) {
+              $manager->persist($entreup);
+              $manager->flush();
+              return $this->redirectToRoute('pro_stage_acceuil');
+        }
+
+        return $this->render('pro_stage/formulaires/ajouterEntreprise.html.twig',
+                            ['form' => $form->createView()]
+                          );
+    }
+
+    /**
+     * @Route("/modif-entreprise/{id}", name="pro_stage_modif_entreprise")
+     */
+    public function modificationEntreprise(EntrepriseRepository $entrepriseRepo, Request $requetteHttp, ObjectManager $manager, $id) {
+
+        $entreup = $entrepriseRepo->find($id);
+
+        $form = $this->createFormBuilder($entreup)
+                        -> add('nom', TextType::class)
+                        -> add('activite', TextType::class)
+                        -> add('adresse', TextType::class)
+                        -> add('siteWeb', UrlType::class)
+                        -> getForm();
+        $form->handleRequest($requetteHttp);
+
+        if($form->isSubmitted()) {
+              $manager->persist($entreup);
+              $manager->flush();
+              return $this->redirectToRoute('pro_stage_details_entreprise', ['id' => $entreup->getId()]);
+        }
+
+        return $this->render('pro_stage/formulaires/modifierEntreprise.html.twig',
+                            ['form' => $form->createView()]);
+    }
 }
