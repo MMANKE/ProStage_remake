@@ -1,4 +1,71 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="card my-3">
+  <div class="card-body">
+    {{ form_start(form) }}
+
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.titre) }} :
+        </div>
+        <div class="card-body">
+          {{ form_errors (form.titre) }}
+          {{ form_widget (form.titre) }}
+        </div>
+      </div>
+
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.domaine) }} :
+        </div>
+        <div class="card-body">
+          {{ form_errors (form.domaine) }}
+          {{ form_widget (form.domaine) }}
+        </div>
+      </div>
+
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.email) }} :
+        </div>
+        <div class="card-body">
+          {{ form_errors (form.email) }}
+          {{ form_widget (form.email) }}
+        </div>
+      </div>
+
+      <div class="card my-3">
+        <div class="card-header">
+          {{ form_label (form.entreprise) }} :
+        </div>
+        <div class="card-body">
+          {% for champs_entreprise in form.entreprise %}
+            <div class="card my-3">
+              <div class="card-header">
+              {{ form_label (champs_entreprise) }} :
+              </div>
+              <div class="card-body">
+                {{ form_errors (champs_entreprise) }}
+                {{ form_widget (champs_entreprise) }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="card my-3">
+        <div class="card-header">
+        {{ form_label (form.formations) }} :
+        </div>
+        <div class="card-body">
+          {% for formation in form.formations %}
+            {{ form_widget (formation) }}
+            {{ form_label (formation) }}
+            <br>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="my-2">
+        <button class="btn btn-primary" type="submit">{{button_label}}</button>
+      </div>
+    {{ form_end(form) }}
+</div>
+</div>

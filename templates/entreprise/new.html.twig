@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Entreprise{% endblock %}
-
 {% block body %}
   <div class="my-2">
     <h1> Creer une Entreprise </h1>
   </div>
 
-    {{ include('entreprise/_form.html.twig') }}
+    {{ include('entreprise/_form.html.twig', {'button_label' : 'Créer'}) }}
 
-    <a href="{{ path('entreprise_index') }}">back to list</a>
+    <div class="mx-1">
+      <a class="btn btn-primary" href="{{ path('entreprise_index') }}" role="button">Retour à la liste</a>
+    </div>
 {% endblock %}

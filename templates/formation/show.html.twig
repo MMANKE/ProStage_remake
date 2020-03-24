@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formation{% endblock %}
-
 {% block body %}
-    <h1>Formation</h1>
 
+  <div class="my-3">
+    <h1> Formation </h1>
+  </div>
     <table class="table">
         <tbody>
             <tr>
@@ -16,15 +16,20 @@
                 <td>{{ formation.nom }}</td>
             </tr>
             <tr>
-                <th>NomComplet</th>
+                <th>Nom Complet</th>
                 <td>{{ formation.nomComplet }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('formation_index') }}">back to list</a>
-
-    <a href="{{ path('formation_edit', {'id': formation.id}) }}">edit</a>
-
-    {{ include('formation/_delete_form.html.twig') }}
+  <div class="row mx-auto">
+<div class="mx-1">
+      <a class="btn btn-primary" href="{{ path('formation_index') }}">Retour à la liste</a>
+    </div>
+{#  <div class="mx-1">
+      <a class="btn btn-primary" href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+    </div> #}
+    <div class="mx-1">
+      {{ include('formation/_delete_form.html.twig') }}
+    </div>
+  </div>
 {% endblock %}

@@ -1,37 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formation index{% endblock %}
-
 {% block body %}
-    <h1>Formation index</h1>
+
+  <div class="my-2">
+    <h1>Formations</h1>
+  </div>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
-                <th>NomComplet</th>
-                <th>actions</th>
+                <th>Nom Complet</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for formation in formations %}
             <tr>
-                <td>{{ formation.id }}</td>
                 <td>{{ formation.nom }}</td>
                 <td>{{ formation.nomComplet }}</td>
                 <td>
-                    <a href="{{ path('formation_show', {'id': formation.id}) }}">show</a>
-                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">edit</a>
+                  <div class="my-1">
+                    <a class="btn btn-primary" href="{{ path('formation_show', {'id': formation.id}) }}">Voir</a>
+                    {#<a class="btn btn-primary" href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>#}
+                  </div>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun résultat :(</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+{#
 
-    <a href="{{ path('formation_new') }}">Create new</a>
+  <div class="my-1">
+     <a class="btn btn-primary"  href="{{ path('formation_new') }}">Créer une Formation</a>
+   </div>
+
+#}
 {% endblock %}

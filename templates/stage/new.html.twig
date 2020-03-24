@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Stage{% endblock %}
-
 {% block body %}
-    <h1>Create new Stage</h1>
 
-    {{ include('stage/_form.html.twig') }}
+    <div class="my-2">
+      <h1> Creer un Stage </h1>
+    </div>
 
-    <a href="{{ path('stage_index') }}">back to list</a>
+    {{ include('stage/_form.html.twig', {'button_label' : 'Ajouter Stage et Entreprise'}) }}
+
+    <div class="mx-1">
+      <a class="btn btn-primary" href="{{ path('stage_index') }}">Retour à la liste</a>
+    </div>
+
 {% endblock %}

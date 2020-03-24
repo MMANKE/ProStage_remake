@@ -1,34 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Stage{% endblock %}
-
 {% block body %}
-    <h1>Stage</h1>
+<!-- titre -->
+<div class="my-3">
+  <h1> {{stage.titre}} </h1>
+</div>
+<div class="card my-3">
+<div class="card-body">
+  <!-- domaine -->
+  <div class="card my-3">
+  <div class="card-header">
+  Domaine :
+  </div>
+  <div class="card-body">
+    {{stage.domaine}}
+  </div>
+  </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ stage.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ stage.titre }}</td>
-            </tr>
-            <tr>
-                <th>Domaine</th>
-                <td>{{ stage.domaine }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ stage.email }}</td>
-            </tr>
-        </tbody>
-    </table>
+  <!-- formation -->
+  <div class="card my-3">
+  <div class="card-header">
+  Formations visées :
+  </div>
+  <div class="card-body">
+    {% for formation in stage.formations %}
+      {{formation.nom}}
+    {% endfor %}
+  </div>
+  </div>
 
-    <a href="{{ path('stage_index') }}">back to list</a>
+  <!-- email -->
+  <div class="card my-3">
+  <div class="card-header">
+  Email de contact :
+  </div>
+  <div class="card-body">
+    {{stage.email}}
+  </div>
+  </div>
+  <div class="my-3">
+    <form action="{{path('pro_stage_details_entreprise', {'id' : stage.entreprise.id })}}">
+        <input class="btn btn-primary" type="submit" value="Voir détails entreprise">
+    </form>
+  </div>
+  </div>
+  </div>
 
-    <a href="{{ path('stage_edit', {'id': stage.id}) }}">edit</a>
+    <div class="row mx-auto">
+    <div class="mx-1">
+        <a class="btn btn-primary" href="{{ path('stage_edit', {'id': stage.id}) }}">Modifier</a>
+      </div>
+      <div class="mx-1">
+        <a class="btn btn-primary" href="{{ path('stage_index') }}">Retour à la liste</a>
+      </div>
+      <div class="mx-1">
+        {{ include('stage/_delete_form.html.twig') }}
+      </div>
+    </div>
 
-    {{ include('stage/_delete_form.html.twig') }}
 {% endblock %}
