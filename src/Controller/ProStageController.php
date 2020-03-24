@@ -24,7 +24,7 @@ class ProStageController extends AbstractController
      */
     public function index()
     {
-        return $this->redirectToRoute('pro_stage_stages');
+        return $this->redirectToRoute('stage_index');
     }
 
     /**

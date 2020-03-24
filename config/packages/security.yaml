@@ -35,9 +35,7 @@ security:
         - { path: ^/entreprise/edit, roles: ROLE_ADMIN }
         - { path: ^/stage/edit, roles: ROLE_ADMIN }
         - { path: ^/stage/new, roles: ROLE_ADMIN }
-        - { path: ^/formation/edit, roles: ROLE_ADMIN }
-        - { path: ^/formation/new, roles: ROLE_ADMIN }
-        - { path: ^/ajout, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
 
     encoders:
         App\Entity\User:
