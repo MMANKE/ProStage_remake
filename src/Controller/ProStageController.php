@@ -80,7 +80,7 @@ class ProStageController extends AbstractController
     }
 
     /**
-     * @Route("/ajout-entreprise", name="pro_stage_ajout_entreprise")
+     * @Route("/ajout/entreprise", name="pro_stage_ajout_entreprise")
      */
     public function addEntreprise(Request $requetteHttp, ObjectManager $manager) {
 
@@ -102,7 +102,7 @@ class ProStageController extends AbstractController
     }
 
     /**
-     * @Route("/modif-entreprise/{id}", name="pro_stage_modif_entreprise")
+     * @Route("/modif/entreprise/{id}", name="pro_stage_modif_entreprise")
      */
     public function modificationEntreprise(EntrepriseRepository $entrepriseRepo, Request $requetteHttp, ObjectManager $manager, $id) {
 
@@ -123,7 +123,7 @@ class ProStageController extends AbstractController
     }
 
     /**
-     * @Route("/ajout-stage", name="pro_stage_ajout_stage")
+     * @Route("/ajout/stage", name="pro_stage_ajout_stage")
      */
     public function addStage(Request $requetteHttp, ObjectManager $manager) {
 
