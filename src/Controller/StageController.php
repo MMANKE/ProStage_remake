@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Stage;
-use App\Form\Stage1Type;
+use App\Form\StageType;
 use App\Repository\StageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class StageController extends AbstractController
     public function new(Request $request): Response
     {
         $stage = new Stage();
-        $form = $this->createForm(Stage1Type::class, $stage);
+        $form = $this->createForm(StageType::class, $stage);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,11 +59,11 @@ class StageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="stage_edit", methods={"GET","POST"})
+     * @Route("/edit/{id}", name="stage_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Stage $stage): Response
     {
-        $form = $this->createForm(Stage1Type::class, $stage);
+        $form = $this->createForm(StageType::class, $stage);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

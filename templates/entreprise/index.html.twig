@@ -3,30 +3,32 @@
 {% block title %}Entreprise index{% endblock %}
 
 {% block body %}
-    <h1>Entreprise index</h1>
+    <div class="my-2">
+      <h1> Entreprises </h1>
+    </div>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
-                <th>Activite</th>
+                <th>Activité</th>
                 <th>Adresse</th>
-                <th>SiteWeb</th>
-                <th>actions</th>
+                <th>Site Web</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entreprise in entreprises %}
             <tr>
-                <td>{{ entreprise.id }}</td>
                 <td>{{ entreprise.nom }}</td>
                 <td>{{ entreprise.activite }}</td>
                 <td>{{ entreprise.adresse }}</td>
-                <td>{{ entreprise.siteWeb }}</td>
+                <td><a href="{{ entreprise.siteWeb }}">{{ entreprise.siteWeb }}</a></td>
                 <td>
-                    <a href="{{ path('entreprise_show', {'id': entreprise.id}) }}">show</a>
-                    <a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}">edit</a>
+                  <div class="my-1">
+                    <a class="btn btn-primary" href="{{ path('entreprise_show', {'id': entreprise.id}) }}" role="button">Voir</a>
+                    <a class="btn btn-primary" href="{{ path('entreprise_edit', {'id': entreprise.id}) }}" role="button">Modifier</a>
+                  </div>
                 </td>
             </tr>
         {% else %}
@@ -36,6 +38,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('entreprise_new') }}">Create new</a>
+    <div class="my-1">
+      <a class="btn btn-primary" href="{{ path('entreprise_new') }}" role="button">Créer une Entreprise</a>
+    </div>
 {% endblock %}
