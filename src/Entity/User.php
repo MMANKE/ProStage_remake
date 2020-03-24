@@ -43,6 +43,10 @@ class User implements UserInterface
      */
     private $nom;
 
+    public function __toString(): ?string {
+      return $this->getUsername();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -144,4 +148,5 @@ class User implements UserInterface
 
         return $this;
     }
+
 }
